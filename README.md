@@ -29,81 +29,75 @@ Display the image until the loop gets over
 Rotate the image using cv2.rotate(smaller_frame,cv2.cv2.ROTATE_180)
 
 ## Program:
-``` Python
-### Developed By: Aishree Ramesh
-### Register No: 212220230003
-
 ## i) Write the frame as JPG file
-
+```python
 import cv2
-
-videoCaptureObject = cv2.VideoCapture(0)
-
-ret,frame = videoCaptureObject.read()
-cv2.imwrite("NewPicture.jpg",frame)
-
-videoCaptureObject.release()
+import numpy as np
+cap=cv2.VideoCapture(0)
+ret,frame=cap.read()
+cv2.imwrite("pic_1.jpg",frame)
+cap.release()
 cv2.destroyAllWindows()
+```
 
 ## ii) Display the video
 
+```python
 import cv2
 import numpy as np
-
-cap = cv2.VideoCapture(0)
-
-
+cap=cv2.VideoCapture(0)
 while True:
-    ret, frame = cap.read()
-
-    cv2.imshow("NewPicture",frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    ret,frame=cap.read()
+    cv2.imshow('frame',frame)
+    if cv2.waitKey(1)==ord('q'):
         break
-
-videoCaptureObject.release()
+cap.release()
 cv2.destroyAllWindows()
+```
 
 ## iii) Display the video by resizing the window
 
+```python
 import cv2
 import numpy as np
-
-cap = cv2.VideoCapture(0)
-
-
+cap=cv2.VideoCapture(0)
 while True:
-    ret, frame = cap.read()
-    width = int(cap.get(3))
-    height = int(cap.get(4))
-    
-    image = np.zeros(frame.shape, np.uint8)
-    smaller_frame = cv2.resize(frame, (0,0), fx = 0.5, fy=0.5)
-
-    cv2.imshow("NewPicture.jpg",smaller_frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    ret,frame=cap.read()
+    width=int(cap.get(3))
+    height=int(cap.get(4))
+    image=np.zeros(frame.shape,np.uint8)
+    smaller_frame=cv2.resize(frame,(0,0),fx=0.5,fy=0.5)
+    image[:height//2,:width//2]=smaller_frame
+    image[height//2: , :width//2]=smaller_frame
+    image[:height//2,width//2:]= smaller_frame
+    image[height//2:,width//2:]=smaller_frame
+    cv2.imshow('frame',image)
+    if cv2.waitKey(1)==ord('q'):
         break
-
-videoCaptureObject.release()
+cap.release()
 cv2.destroyAllWindows()
+```
 
 ## iv) Rotate and display the video
+```python
 import cv2
 import numpy as np
-
-cap = cv2.VideoCapture(0)
-
+cap=cv2.VideoCapture(0)
 while True:
-    ret, frame = cap.read()
-
-    frame = cv2.rotate(frame,cv2.cv2.ROTATE_180)
-
-    cv2.imshow("NewPicture.jpg",frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    ret,frame=cap.read()
+    width=int(cap.get(3))
+    height=int(cap.get(4))
+    image=np.zeros(frame.shape,np.uint8)
+    smaller_frame=cv2.resize(frame,(0,0),fx=0.5,fy=0.5)
+    image[:height//2,:width//2]=image[:height//2, :width//2] = cv2.rotate(smaller_frame,cv2.cv2.ROTATE_180)
+    image[height//2: , :width//2]=smaller_frame
+    image[:height//2,width//2:]= image[:height//2, :width//2] = cv2.rotate(smaller_frame,cv2.cv2.ROTATE_180)
+    image[height//2:,width//2:]=smaller_frame
+    cv2.imshow('frame',image)
+    if cv2.waitKey(1)==ord('q'):
         break
-
-videoCaptureObject.release()
+cap.release()
 cv2.destroyAllWindows()
-
 
 ```
 ## Output
@@ -117,11 +111,11 @@ cv2.destroyAllWindows()
 
 
 ### iii) Display the video by resizing the window
-![image](https://user-images.githubusercontent.com/70213227/161396345-74f19edb-51c6-4014-b29d-cbf66884b830.png)
+![image](https://user-images.githubusercontent.com/70213227/163848734-0d87d2c7-2020-4abe-8d24-bc35747add5e.png)
 
 
 ### iv) Rotate and display the video
-![image](https://user-images.githubusercontent.com/70213227/161396386-b11c71ac-8594-436e-b5bf-6686d2bfc32f.png)
+![image](https://user-images.githubusercontent.com/70213227/163848843-55fe54c7-f0c2-488c-bad2-4b250fcc061a.png)
 
 
 ## Result:
