@@ -1,4 +1,6 @@
-# Image-Acquisition-from-Web-Camera
+### EX NO : 02
+### DATE  : 08.04.2022
+# <p align="center">Image-Acquisition-from-Web-Camera</p>
 ## Aim
  
 Aim:
