@@ -29,6 +29,10 @@ Display the image until the loop gets over
 Rotate the image using cv2.rotate(smaller_frame,cv2.cv2.ROTATE_180)
 
 ## Program:
+
+Developed by: Aishree Ramesh
+Register Number: 212220230003
+
 ## i) Write the frame as JPG file
 ```python
 import cv2
